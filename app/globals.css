@@ -24,3 +24,46 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* --- CONFIGURATION DES SLIDERS INTERACTIFS --- */
+
+/* Masquer la barre de défilement moche */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Animations de défilement */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes infinite-scroll-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 50s linear infinite;
+}
+
+.animate-infinite-scroll-reverse {
+  animation: infinite-scroll-reverse 50s linear infinite;
+}
+
+/* Pause globale lors du survol de la zone */
+.group-container:hover .animate-infinite-scroll,
+.group-container:hover .animate-infinite-scroll-reverse {
+  animation-play-state: paused !important;
+}
+
+/* Fluidité pour le swipe manuel */
+.swipe-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
