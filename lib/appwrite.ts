@@ -9,6 +9,6 @@ export const ID_UNIQUE = ID;
 
 export const APPWRITE_CONFIG = {
     dbId: process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!,
-    colLeads: process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!,
-    colServices: process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_SERVICES_ID!,
+    colLeads: process.env.NEXT_PUBLIC_APPWRITE_COL_LEADS!,     
+    colServices: process.env.NEXT_PUBLIC_APPWRITE_COL_SERVICES!, 
 };
