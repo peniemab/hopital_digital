@@ -55,10 +55,12 @@ export default function Features() {
 
                 {/* 2. SECTION TECHNOLOGIES AVEC PAUSE ET SWIPE */}
                 <div className="mb-24 group-container">
-                    <div className="max-w-2xl mb-12 md:ml-auto md:text-right flex flex-col md:items-end">
+                    <div className="max-w-2xl mb-12">
                         <h2 className="text-5xl font-black text-blue-950 tracking-tighter mb-4 uppercase">
                             PLATEAU <span className="text-cyan-500">TECHNIQUE</span>
                         </h2>
+                    
+
                         <p className="text-slate-500 text-lg">Le futur de la médecine 2026 sous votre contrôle.</p>
                     </div>
 

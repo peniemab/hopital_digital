@@ -11,10 +11,15 @@ export default function Home() {
       <Hero />
 
       {/* Section 2 : Capture de prospects (Ton idée) */}
+      <div id="appointment-form">
       <LeadCapture />
+      </div>
 
     {/* section 3 : Service  */}
+    <div id="services-section">
       <Services />
+      </div>
+
 
     {/* section 4 : Caractéristiques */}
       <Features />

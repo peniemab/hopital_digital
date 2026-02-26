@@ -1,4 +1,13 @@
+"use client";
+import { useState } from 'react'; 
+
 export default function Hero() {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="relative h-[80vh] flex items-center justify-center text-white overflow-hidden">
       {/* L'IMAGE DE FOND (Ajoutée ici) */}
@@ -25,11 +34,15 @@ export default function Hero() {
           Accédez à nos 12 services médicaux, prenez rendez-vous en ligne et suivez votre dossier médical en toute sécurité.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition duration-300">
-            Prendre Rendez-vous
+<button 
+            onClick={() => scrollToSection('appointment-form')}
+            className="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition duration-300 shadow-lg"
+          >            Prendre Rendez-vous
           </button>
-          <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300">
-            Nos Services
+<button 
+            onClick={() => scrollToSection('services-section')}
+            className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-900 transition duration-300"
+          >            Nos Services
           </button>
         </div>
       </div>
