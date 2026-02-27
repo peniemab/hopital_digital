@@ -3,6 +3,12 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Clock } from 'lucid
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <footer className="bg-blue-950 text-white pt-16 pb-8">
@@ -16,6 +22,9 @@ export default function Footer() {
                     <p className="text-blue-100/70 text-sm leading-relaxed">
                         Excellence médicale et innovation au service de votre santé. La Clinique Astryd s'engage à fournir des soins de classe mondiale avec des technologies de pointe.
                     </p>
+                    {/* <div className="flex items-center gap-2 text-[10px] font-bold text-cyan-400 uppercase tracking-widest">
+                            <ShieldCheck size={14} /> Institution Agréée & Certifiée
+                        </div> */}
                     <div className="flex gap-4 pt-2">
                         <Facebook className="hover:text-blue-400 cursor-pointer transition-colors" size={20} />
                         <Instagram className="hover:text-pink-400 cursor-pointer transition-colors" size={20} />
@@ -26,15 +35,15 @@ export default function Footer() {
                 {/* Colonne 2 : Navigation */}
                 <div>
                     <h4 className="text-lg font-semibold mb-6 border-b border-blue-900 pb-2">Navigation</h4>
-                    <ul className="space-y-4 text-sm text-blue-100/70">
-                        <li><a href="#" className="hover:text-white transition-colors">Accueil</a></li>
-                        <li><a href="#services" className="hover:text-white transition-colors">Nos Services</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors">Équipe Médicale</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors">Prendre RDV</a></li>
+                    <ul className="space-y-4 text-sm text-blue-100/70 font-medium">
+                        <li><button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className="hover:text-white transition-colors">Accueil</button></li>
+                        <li><button onClick={() => scrollToSection('services-section')} className="hover:text-white transition-colors">Nos Services</button></li> 
+                        <li><button onClick={() => scrollToSection('doctors-section')} className="hover:text-white transition-colors">Équipe Médicale</button></li>
+                        <li><button onClick={() => scrollToSection('appointment-form')} className="hover:text-white transition-colors font-bold text-cyan-400">Je prends mon rendez-vous</button></li>
                     </ul>
                 </div>
 
-                {/* Colonne 3 : Contact */}
+                {/* Contact */}
                 <div>
                     <h4 className="text-lg font-semibold mb-6 border-b border-blue-900 pb-2">Contact</h4>
                     <ul className="space-y-4 text-sm text-blue-100/70">
@@ -63,7 +72,7 @@ export default function Footer() {
                                 <Clock size={12} /> Consultations
                             </p>
                             <ul className="space-y-1">
-                                <li className="flex justify-between"><span>Lun - Ven</span> <span className="text-white">08h - 20h</span></li>
+                                <li className="flex justify-between"><span>Lundi - Vendredi</span> <span className="text-white">08h - 20h</span></li>
                                 <li className="flex justify-between"><span>Samedi</span> <span className="text-white">09h - 16h</span></li>
                             </ul>
                         </div>
@@ -71,7 +80,7 @@ export default function Footer() {
                         {/* Visites */}
                         <div>
                             <p className="text-cyan-400 font-bold uppercase text-[10px] tracking-widest mb-2 flex items-center gap-1">
-                                <Clock size={12} /> Visites Patients
+                                <Clock size={12} /> horaires de visite
                             </p>
                             <ul className="space-y-1">
                                 <li className="flex justify-between"><span>Matin</span> <span className="text-white">11h - 13h</span></li>

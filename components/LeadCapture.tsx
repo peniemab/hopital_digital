@@ -2,14 +2,12 @@
 
 import { useState } from 'react';
 import { databases, ID_UNIQUE, APPWRITE_CONFIG } from '@/lib/appwrite';
+import { ArrowRight, Sparkles } from 'lucide-react'; // Ajout d'icônes pro
 
 export default function LeadCapture() {
-  // Mode du formulaire : simple (leads) ou complet (appointments)
   const [isAppointmentMode, setIsAppointmentMode] = useState(false);
   const [status, setStatus] = useState('');
-  const [email, setEmail] = useState('');
 
-  // Champs communs et spécifiques (tes photos)
   const [formData, setFormData] = useState({
     fullname: '',
     phone: '',
@@ -30,7 +28,6 @@ export default function LeadCapture() {
 
     try {
       if (isAppointmentMode) {
-        // ENVOI VERS APPOINTMENTS
         await databases.createDocument(
           APPWRITE_CONFIG.dbId,
           APPWRITE_CONFIG.colAppointments, 
@@ -51,7 +48,6 @@ export default function LeadCapture() {
         );
         setStatus("Pour toute annulation, merci de prévenir 24h à l'avance au +243 123 456 789. Merci ! Un conseiller vous contactera bientôt pour confirmer votre rendez-vous.");
       } else {
-        // ENVOI VERS LEADS (Capture simple)
         await databases.createDocument(
           APPWRITE_CONFIG.dbId,
           APPWRITE_CONFIG.colLeads,
@@ -61,10 +57,8 @@ export default function LeadCapture() {
             phone: formData.phone,
           }
         );
-        setStatus("Merci ! Un conseiller vous contactera bientôt.");
+        setStatus("Merci ! Votre inscription est confirmée.");
       }
-      
-      // Reset après succès
       setFormData({ fullname: '', phone: '', email: '', gender: '', birthdate: '', commune: '', quartier: '', avenue: '', service_id: '', appointment_date: '', reason: '' });
     } catch (error: any) {
       setStatus(`Erreur : ${error.message}`);
@@ -72,124 +66,142 @@ export default function LeadCapture() {
   };
 
   return (
-    <section className="py-16 bg-white border-y border-slate-100">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-10">
+    // LE FRAGMENT <> RESOUT L'ERREUR JSX
+    <>
+      <section id="appointment-form" className="py-24 bg-white border-y border-slate-100">
+        <div className="max-w-4xl mx-auto px-4">
+          
+          <div className="text-center mb-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-50 text-green-600 text-xs font-bold mb-4 uppercase tracking-tighter">
+ <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              Prise en charge disponible sous 5 min
+              </div>
           <h2 className="text-3xl font-bold text-blue-900 mb-2">Inscrivez-vous à notre newsletter santé</h2>
+
           <p className="text-slate-500">Prendre mon rendez-vous en ligne</p>
-        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-3xl shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <input 
-              type="text" placeholder="Noms:" required
-              className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-              value={formData.fullname} onChange={(e) => setFormData({...formData, fullname: e.target.value})}
-            />
-            <input 
-              type="email" placeholder="Email:exemple@gmail.com" required
-              className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-              value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
-            />
-            <input 
-              type="tel" placeholder="Téléphone : 243xxxxxxxx" required
-              className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-              value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
-            />
+            {/* <h2 className="text-4xl font-black text-blue-950 mb-3 tracking-tight uppercase">
+              {isAppointmentMode ? "Finalisez votre admission" : "Maîtrisez votre santé"}
+            </h2> */}
+            
           </div>
 
-          <div className="flex justify-center">
-            <button 
-              type="button" 
-              onClick={() => setIsAppointmentMode(!isAppointmentMode)}
-              className="text-sm text-blue-800 font-semibold underline"
-            >
-              {isAppointmentMode ? "Fermer" : "Consulter un expert maintenant, Je prends soin de ma santé."}
-            </button>
-          </div>
-
-          {/* SECTION DÉTAILLÉE (Hybride) */}
-          {isAppointmentMode && (
-            <div className="space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <select 
-                  className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200 border outline-none"
-                  value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})}
-                >
-                  <option value="">Sexe</option>
-                  <option value="M">Masculin</option>
-                  <option value="F">Féminin</option>
-                </select>
-                <input 
-                  type="text" placeholder="Date de naissance (JJ/MM/AA)"
-                  className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-                  value={formData.birthdate} onChange={(e) => setFormData({...formData, birthdate: e.target.value})}
-                />
-                <input 
-                  type="text" placeholder="Commune : kinshasa,nsele,..."
-                  className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-                  value={formData.commune} onChange={(e) => setFormData({...formData, commune: e.target.value})}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input 
-                  type="text" placeholder="Quartier"
-                  className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-                  value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})}
-                />
-                <input 
-                  type="text" placeholder="Avenue et Numéro"
-                  className="p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200"
-                  value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})}
-                />
-              </div>
-
-              <div className="p-4 bg-blue-100 rounded-2xl">
-<div className="space-y-2 mb-4">
-  <select 
-    required={isAppointmentMode}
-    className="w-full p-3 rounded-xl border outline-none bg-white focus:ring-2 focus:ring-blue-200"
-    value={formData.service_id} 
-    onChange={(e) => setFormData({...formData, service_id: e.target.value})}
-  >
-    <option value="">Choisir un service</option>
-    {/* Idéalement, ici on bouclera sur tes services Appwrite plus tard */}
-    <option value="cardiologie">Cardiologie</option>
-    <option value="dentisterie">Dentisterie</option>
-    <option value="pediatrie">Pédiatrie</option>
-    <option value="gynecologie">Gynécologie</option>
-    <option value="generaliste">Médecine Générale</option>
-  </select>
-</div>
-<textarea 
-      placeholder="Motif de la consultation (Ex: Fièvre, Douleur, Contrôle...)"
-      className="w-full p-3 rounded-xl border outline-none bg-white focus:ring-2 focus:ring-blue-200"
-      value={formData.reason} 
-      onChange={(e) => setFormData({...formData, reason: e.target.value})}
-      rows={3}
-    />
-                <p className="text-xs font-black text-blue-800 uppercase mb-3 ml-1 tracking-widest">
-    Sélectionner la Date & Heure
-  </p>
-  <input 
-    type="datetime-local" 
-    required={isAppointmentMode}
-    className="w-full p-3 rounded-xl border outline-none focus:ring-2 focus:ring-blue-200 bg-white shadow-inner"
-    value={formData.appointment_date} 
-    onChange={(e) => setFormData({...formData, appointment_date: e.target.value})}
-  />
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-10 rounded-[3rem] shadow-2xl shadow-blue-900/5 border border-slate-50">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <input 
+                type="text" placeholder="Noms complets" required
+                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                value={formData.fullname} onChange={(e) => setFormData({...formData, fullname: e.target.value})}
+              />
+              <input 
+                type="email" placeholder="votre@email.com" required
+                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
+              <input 
+                type="tel" placeholder="+243..." required
+                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
+              />
             </div>
-          )}
 
-          <button type="submit" className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition">
-            {isAppointmentMode ? 'Confirmer le Rendez-vous' : 'Être rappelé par un conseiller'}
-          </button>
+            <div className="flex justify-center py-4">
+              <button 
+                type="button" 
+                onClick={() => setIsAppointmentMode(!isAppointmentMode)}
+                className={`
+                  group relative flex items-center gap-3 px-8 py-3 
+                  rounded-full font-bold transition-all duration-300 transform active:scale-95
+                  ${isAppointmentMode 
+                    ? "bg-slate-100 text-slate-600" 
+                    : "bg-blue-600 text-white shadow-xl shadow-blue-600/20 hover:bg-blue-700"
+                  }
+                `}
+              >
+                {!isAppointmentMode && <Sparkles size={18} className="animate-pulse" />}
+                <span className="text-sm uppercase tracking-widest">
+                  {isAppointmentMode ? "Fermer" : "Prendre mon rendez-vous maintenant"}
+                </span>
+                {/* <ArrowRight size={18} className={`transition-transform ${isAppointmentMode ? 'rotate-90' : 'group-hover:translate-x-1'}`} /> */}
+              </button>
+            </div>
 
-          {status && <p className="text-center font-medium text-blue-900">{status}</p>}
-        </form>
+            {isAppointmentMode && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-top-6 duration-700 p-6 bg-blue-50/30 rounded-[2rem] border border-blue-100/50">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <select 
+                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})}
+                  >
+                    <option value="">Sexe</option>
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                  </select>
+                  <input 
+                    type="text" placeholder="Naissance (JJ/MM/AA)"
+                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    value={formData.birthdate} onChange={(e) => setFormData({...formData, birthdate: e.target.value})}
+                  />
+                  <input 
+                    type="text" placeholder="Votre Commune"
+                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    value={formData.commune} onChange={(e) => setFormData({...formData, commune: e.target.value})}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input type="text" placeholder="Quartier" className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})} />
+                  <input type="text" placeholder="Adresse complète" className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})} />
+                </div>
+
+                <div className="space-y-4">
+                  <select required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.service_id} onChange={(e) => setFormData({...formData, service_id: e.target.value})}>
+                    <option value="">Choisir un service expert</option>
+                    <option value="cardiologie">Cardiologie Interventionnelle</option>
+                    <option value="pediatrie">Néonatologie & Pédiatrie</option>
+                    <option value="chirurgie">Chirurgie de Pointe</option>
+                  </select>
+                  <textarea placeholder="Décrivez brièvement le motif..." className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
+                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
+                </div>
+              </div>
+            )}
+
+            <button type="submit" className="w-full bg-blue-950 text-white font-black py-5 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
+              {isAppointmentMode ? 'Je prends mon rendez-vous' : 'Je m\'inscris à la newsletter de la Clinique Astryd'}
+            </button>
+
+            {status && <p className="text-center p-4 bg-blue-50 rounded-2xl font-bold text-blue-900 animate-pulse">{status}</p>}
+          </form>
+        </div>
+      </section>
+
+      {/* BANNIÈRE DE PRESTIGE (Indétrônable) */}
+      <div className="bg-white border-b border-slate-100 py-12">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="flex items-center gap-4">
+            <div className="flex text-yellow-400">
+              {[...Array(5)].map((_, i) => (
+                <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              ))}
+            </div>
+            <div>
+              <p className="text-blue-950 font-black text-xl tracking-tight leading-none">4.9/5</p>
+              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Satisfaction certifiée</p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 items-center text-[10px] md:text-xs font-black text-slate-300 uppercase tracking-[0.3em]">
+            <span className="hover:text-blue-600 transition-colors">OMS CERTIFIED</span>
+            <span className="hover:text-blue-600 transition-colors">CNSS RDC</span>
+            <span className="hover:text-blue-600 transition-colors">AIG INSURANCE</span>
+            <span className="hover:text-blue-600 transition-colors">ASCOMA GROUP</span>
+          </div>
+        </div>
       </div>
-    </section>
+    </>
   );
 }

@@ -22,7 +22,9 @@ export default function Home() {
 
 
     {/* section 4 : Caractéristiques */}
+    <div id= "doctors-section">
       <Features />
+      </div>
 
     {/* section 5 : pied de page */}
       <Footer /> 

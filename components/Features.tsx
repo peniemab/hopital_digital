@@ -1,5 +1,5 @@
 "use client";
-import { ShieldCheck, Users, Microscope, ArrowRight, Info } from 'lucide-react';
+import { ShieldCheck, Users, Microscope, ArrowRight, Sparkles, Info } from 'lucide-react';
 
 const doctors = [
     { name: "Dr. Aris Astryd", role: "Chirurgien Chef", details: "Expert en chirurgie robotique assistée, 15 ans d'expérience.", img: "https://i.pinimg.com/736x/8a/0a/61/8a0a6184877e89139268670b306b38ca.jpg" },
@@ -18,6 +18,13 @@ const equipments = [
 ];
 
 export default function Features() {
+
+    const scrollToForm = () => {
+        const element = document.getElementById('appointment-form');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     return (
         <section className="py-24 bg-[#F8FAFC] overflow-hidden">
             <div className="max-w-7xl mx-auto px-4">
@@ -61,7 +68,7 @@ export default function Features() {
                         </h2>
                     
 
-                        <p className="text-slate-500 text-lg">Le futur de la médecine 2026 sous votre contrôle.</p>
+                        <p className="text-slate-500 text-lg">Le futur de la médecine sous votre contrôle.</p>
                     </div>
 
                     <div className="swipe-container hide-scrollbar overflow-x-auto cursor-grab active:cursor-grabbing">
@@ -89,27 +96,46 @@ export default function Features() {
                     </div>
                 </div>
 
-                {/* 3. FOOTER DE SECTION */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="p-10 bg-white rounded-[3rem] shadow-xl border border-slate-100 flex items-center gap-6">
-                        <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                            <ShieldCheck size={40} />
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-bold text-blue-950 mb-1 uppercase tracking-tight">Data Security</h3>
-                            <p className="text-slate-500 text-sm">Protection blockchain de vos dossiers.</p>
-                        </div>
-                    </div>
+                    
+         <button 
+  type="button" 
+  onClick={scrollToForm}
+  className="group relative rounded-[3rem]  flex items-center  px-10 py-4 bg-blue-600 text-white shadow-xl shadow-blue-600/20  font-bold transition-all duration-300 transform hover:bg-blue-700 hover:shadow-blue-300/50 hover:-translate-y-0.5 active:scale-95"
+>
+  <Sparkles size={18} className="animate-pulse text-cyan-300" />
+  
+  <span className="text-sm uppercase tracking-widest">
+    Prendre mon rendez-vous maintenant
+  </span>
 
-                    <div className="p-10 bg-blue-950 rounded-[3rem] shadow-2xl flex items-center justify-between text-white group cursor-pointer">
-                        <div>
-                            <h3 className="text-2xl font-bold mb-1 uppercase">Prendre RDV</h3>
-                            <p className="text-blue-300 text-sm italic">Accès prioritaire Horizon Santé</p>
-                        </div>
-                        <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center group-hover:bg-cyan-500 transition-all transform group-hover:rotate-[-45deg]">
-                            <ArrowRight size={28} />
-                        </div>
-                    </div>
+</button>  
+
+
+                    {/* <div 
+    onClick={scrollToForm}
+    className="p-10 bg-blue-950 rounded-[3rem] shadow-2xl flex items-center justify-between text-white group cursor-pointer hover:bg-slate-900 transition-all transform active:scale-[0.98] border border-blue-900/30"
+>
+    <div className="flex items-center gap-4"> */}
+        {/* <span className="relative flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+        </span> */}
+        
+        {/* <div 
+    onClick={scrollToForm}
+    className="p-6  rounded-[3rem] shadow-2xl flex items-center justify-between text-white group cursor-pointer hover:bg-slate-900 transition-all transform active:scale-[0.98] "
+>               
+            <span className="text-sm uppercase tracking-widest">
+                Prendre mon rendez-vous maintenant
+                </span>
+        </div>
+    </div> */}
+
+    {/* <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-900/50 group-hover:bg-cyan-500 transition-all transform group-hover:rotate-[-45deg]">
+        <ArrowRight size={28} className="text-white" />
+    </div> */}
+{/* </div> */}
                 </div>
             </div>
         </section>

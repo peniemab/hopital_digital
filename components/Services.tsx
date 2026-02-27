@@ -14,7 +14,7 @@ const iconMap: { [key: string]: any } = {
   activity: Activity,
   syringe: Syringe,
   microbe: FlaskConical,   
-  eye: Eye,
+  eye: Eye, 
   tooth: Smile,      
   bones: Bone,       
   brain: Brain,
@@ -22,7 +22,7 @@ const iconMap: { [key: string]: any } = {
   emergency: Thermometer
 };
 
-// DICTIONNAIRE D'IMAGES (Nouveau pour le visuel)
+// DICTIONNAIRE D'IMAGES 
 const imageMap: { [key: string]: string } = {
     stethoscope: "https://i.pinimg.com/736x/b3/a7/3e/b3a73eefee55a12c044757818a574a26.jpg", //radiologieok
     activity:  "https://i.pinimg.com/1200x/58/6d/d5/586dd5a3fc9fb7806e545bdb0ff86846.jpg",    //medecine interne et chirurgieok 
@@ -95,10 +95,8 @@ export default function Services() {
                                     }}
                                 />
 
-                                {/* OVERLAY DÉGRADÉ (Pour la lisibilité) */}
                                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-blue-950 via-blue-950/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                                {/* CONTENU TEXTE */}
                                 <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end">
                                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${
                                         service.is_emergency ? 'bg-red-500 text-white' : 'bg-white/20 backdrop-blur-md text-white group-hover:bg-blue-500'
@@ -110,7 +108,6 @@ export default function Services() {
                                         {service.name}
                                     </h3>
                                     
-                                    {/* Description qui apparaît au survol */}
                                     <p className="text-blue-100 text-sm opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-300 overflow-hidden leading-relaxed">
                                         {service.description}
                                     </p>

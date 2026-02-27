@@ -9,7 +9,7 @@ export default function Hero() {
     }
   };
   return (
-    <section className="relative h-[80vh] flex items-center justify-center text-white overflow-hidden">
+    <section className="relative h-[80vh] flex items-center  justify-center text-white overflow-hidden">
       {/* L'IMAGE DE FOND (Ajoutée ici) */}
       <div 
         className="absolute inset-0 z-0"
@@ -19,12 +19,10 @@ export default function Hero() {
           backgroundSize: 'cover',
         }}
       >
-        {/* Le dégradé qui remplace ton ancien bg-gradient pour garder la lisibilité */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-700/80"></div>
       </div>
 
-      {/* TON CODE EXISTANT (Intouché, juste passé en z-10) */}
-      <div className="relative z-10 text-center px-4 max-w-3xl">
+      <div className="relative z-10 text-center px-4 mt-6 max-w-3xl">
         <span className="uppercase tracking-widest text-blue-200 text-sm font-semibold">Projet Horizon Santé 2026</span>
         <h1 className="text-5xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight">
           La Clinique Astryd, <br />
@@ -33,7 +31,7 @@ export default function Hero() {
         <p className="text-lg md:text-xl mb-8 text-blue-100">
           Accédez à nos 12 services médicaux, prenez rendez-vous en ligne et suivez votre dossier médical en toute sécurité.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
 <button 
             onClick={() => scrollToSection('appointment-form')}
             className="bg-white text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-blue-50 transition duration-300 shadow-lg"
