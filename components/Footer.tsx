@@ -49,12 +49,12 @@ export default function Footer() {
                             <span>123 Avenue de la Santé,<br />Gombe, Kinshasa, RDC</span>
                         </li>
                         <li className="flex items-center font-black gap-3">
-                            <Phone size={18} className="text-blue-400 shrink-0" />
-                            <span>+243 812 345 678</span>
+                            <Phone size={18} className="text-blue-400 shrink-0"/>
+                            <span className='tel:243812345678'>+243 812 345 678</span>
                         </li>
                         <li className="flex items-center font-black gap-3">
-                            <Mail size={18} className="text-blue-400 shrink-0" />
-                            <span>contact@astryd-sante.cd</span>
+                            <Mail size={18} className="text-blue-400 shrink-0"/>
+                            <span className='mailto:contact@astryd.-sante.com'>contact@astryd-sante.com</span>
                         </li>
                     </ul>
                 </div>
