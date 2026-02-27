@@ -70,7 +70,7 @@ export default function Services() {
         <section id="services" className="py-20 bg-white">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl font-extrabold text-blue-950 mb-4 tracking-tight">Nos Spécialités Médicales</h2>
+                    <h2 className="text-2xl font-black text-blue-950 mb-4 tracking-tight">Nos Spécialités Médicales</h2>
                     <p className="text-slate-500 max-w-2xl mx-auto">
                         Une expertise de pointe alliée à un plateau technique moderne pour votre santé.
                     </p>

@@ -32,10 +32,10 @@ export default function Features() {
                 {/* 1. SECTION MÉDECINS AVEC PAUSE ET SWIPE */}
                 <div className="mb-24 group-container">
                     <div className="max-w-2xl mb-12">
-                        <h2 className="text-5xl font-black text-blue-950 tracking-tighter mb-4 uppercase">
-                            NOS EXPERTS <span className="text-blue-600">RECONNUS</span>
+                        <h2 className="text-2xl text-center font-black text-blue-950 tracking-tighter mb-4 ">
+                            Nos Experts Médecins                       
                         </h2>
-                        <p className="text-slate-500 text-lg">Défilement automatique ou <b>glissez manuellement</b> pour explorer.</p>
+                        <p className="text-slate-500 text-lg">Glissez manuellement et Découvrez notre équipe pluridisciplinaire de médecins experts qualifiés, reconnus pour leur impartialité, leur rigueur scientifique et leur expérience approfondie dans l'évaluation des dommages corporels et les expertises médico-légales.</p>
                     </div>
 
                     <div className="swipe-container hide-scrollbar overflow-x-auto cursor-grab active:cursor-grabbing">

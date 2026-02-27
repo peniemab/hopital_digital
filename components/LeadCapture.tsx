@@ -68,7 +68,7 @@ export default function LeadCapture() {
   return (
     // LE FRAGMENT <> RESOUT L'ERREUR JSX
     <>
-      <section id="appointment-form" className="py-24 bg-white border-y border-slate-100">
+      <section id="appointment-form" className="py-24 bg-white border-y border-blue-600/20">
         <div className="max-w-4xl mx-auto px-4">
           
           <div className="text-center mb-10">
@@ -93,17 +93,17 @@ export default function LeadCapture() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <input 
                 type="text" placeholder="Noms" required
-                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                className="p-4 rounded-2xl border-blue-600/20 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
                 value={formData.fullname} onChange={(e) => setFormData({...formData, fullname: e.target.value})}
               />
               <input 
                 type="email" placeholder="votre@email.com" required
-                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                className="p-4 rounded-2xl border-blue-600/20 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
                 value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
               <input 
                 type="tel" placeholder="+243..." required
-                className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
+                className="p-4 rounded-2xl border-blue-600/20 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
                 value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
               />
             </div>
@@ -130,10 +130,10 @@ export default function LeadCapture() {
             </div>
 
             {isAppointmentMode && (
-              <div className="space-y-4 animate-in fade-in slide-in-from-top-6 duration-700 bg-white ">
+              <div className="space-y-6 animate-in fade-in slide-in-from-top-6 duration-700 bg-white ">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <select 
-                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
+                    className="p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})}
                   >
                     <option value="">Sexe</option>
@@ -142,35 +142,35 @@ export default function LeadCapture() {
                   </select>
                   <input 
                     type="text" placeholder="Date de naissance (JJ/MM/AA)"
-                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
+                    className="p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.birthdate} onChange={(e) => setFormData({...formData, birthdate: e.target.value})}
                   />
                   <input 
                     type="text" placeholder="Commune"
-                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
+                    className="p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.commune} onChange={(e) => setFormData({...formData, commune: e.target.value})}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Quartier" className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})} />
-                  <input type="text" placeholder="Avenue et numero" className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})} />
+                  <input type="text" placeholder="Quartier" className="p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})} />
+                  <input type="text" placeholder="Avenue et numero" className="p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})} />
                 </div>
 
                 <div className="space-y-4">
-                  <select required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.service_id} onChange={(e) => setFormData({...formData, service_id: e.target.value})}>
+                  <select required={isAppointmentMode} className="w-full p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.service_id} onChange={(e) => setFormData({...formData, service_id: e.target.value})}>
                     <option value="">Choisir un service</option>
                     <option value="cardiologie">Cardiologie Interventionnelle</option>
                     <option value="pediatrie">Néonatologie & Pédiatrie</option>
                     <option value="chirurgie">Chirurgie de Pointe</option>
                   </select>
-                  <textarea placeholder="Décrivez brièvement le motif..." className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
-                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
+                  <textarea placeholder="Décrivez brièvement le motif..." className="w-full p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
+                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
                 </div>
               </div>
             )}
 
-            <button type="submit" className="w-full bg-green-900 text-white font-black py-4 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
+            <button type="submit" className="w-full mt-2 bg-green-900 text-white font-black py-4 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
               {isAppointmentMode ? 'Je prends rendez-vous' : 'Je m\'inscris'}
             </button>
 
@@ -180,7 +180,7 @@ export default function LeadCapture() {
       </section>
 
       {/* BANNIÈRE DE PRESTIGE (Indétrônable) */}
-      <div className="bg-white border-b border-slate-100 py-12">
+      <div className="bg-white border-b border-blue-600/20 py-12">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex items-center gap-4">
             <div className="flex text-yellow-400">
