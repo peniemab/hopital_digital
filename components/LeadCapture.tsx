@@ -164,8 +164,8 @@ export default function LeadCapture() {
                     <option value="pediatrie">Néonatologie & Pédiatrie</option>
                     <option value="chirurgie">Chirurgie de Pointe</option>
                   </select>
-                  <div className='p-4'>
-                  <input type="datetime-local" required={isAppointmentMode} className="w-full text-gray-900 text-xs font-black rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
+                  <div>
+                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 text-gray-900 text-xs font-black rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
 </div>
                   <textarea placeholder="Décrivez brièvement le motif..." className="w-full text-gray-900 text-xs font-black p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
                 </div>
