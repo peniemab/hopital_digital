@@ -23,10 +23,9 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 text-center px-4 mt-6 max-w-3xl">
-        <span className="uppercase tracking-widest text-blue-200 text-sm font-semibold">Projet Horizon Santé 2026</span>
-        <h1 className="text-5xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight">
+        <h1 className="text-3xl md:text-6xl font-extrabold mt-4 mb-6 leading-tight">
           La Clinique Astryd, <br />
-          <span className="text-blue-300">Entièrement Digitalisée</span>
+          <span className="text-blue-300 text-2xl">Entièrement Digitalisée</span>
         </h1>
         <p className="text-lg md:text-xl mb-8 text-blue-100">
           Accédez à nos 12 services médicaux, prenez rendez-vous en ligne et suivez votre dossier médical en toute sécurité.

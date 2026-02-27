@@ -77,11 +77,11 @@ export default function LeadCapture() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              Prise en charge disponible sous 5 min
+            <p> Prise en charge disponible sous 5 min </p>
               </div>
-          <h2 className="text-3xl font-bold text-blue-900 mb-2">Inscrivez-vous à notre newsletter santé</h2>
+          <h2 className="text-2xl font-bold text-blue-900 mb-2">Inscrivez-vous à notre newsletter santé</h2>
 
-          <p className="text-slate-500">Prendre mon rendez-vous en ligne</p>
+          <p className="text-slate-500 text-xl">Prendre mon rendez-vous en ligne</p>
 
             {/* <h2 className="text-4xl font-black text-blue-950 mb-3 tracking-tight uppercase">
               {isAppointmentMode ? "Finalisez votre admission" : "Maîtrisez votre santé"}
@@ -89,10 +89,10 @@ export default function LeadCapture() {
             
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 bg-white p-10 rounded-[3rem] shadow-2xl shadow-blue-900/5 border border-slate-50">
+          <form onSubmit={handleSubmit} className="space-y-2 bg-white p-3 rounded-[3rem] shadow-2xl shadow-blue-900/5 border border-slate-50">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <input 
-                type="text" placeholder="Noms complets" required
+                type="text" placeholder="Noms" required
                 className="p-4 rounded-2xl border-slate-100 border outline-none focus:ring-2 focus:ring-blue-500/20 bg-slate-50/50"
                 value={formData.fullname} onChange={(e) => setFormData({...formData, fullname: e.target.value})}
               />
@@ -113,10 +113,10 @@ export default function LeadCapture() {
                 type="button" 
                 onClick={() => setIsAppointmentMode(!isAppointmentMode)}
                 className={`
-                  group relative flex items-center gap-3 px-8 py-3 
+                  group relative flex items-center gap-3 py-3 px-8
                   rounded-full font-bold transition-all duration-300 transform active:scale-95
                   ${isAppointmentMode 
-                    ? "bg-slate-100 text-slate-600" 
+                    ? "bg-red-200 text-slate-800" 
                     : "bg-blue-600 text-white shadow-xl shadow-blue-600/20 hover:bg-blue-700"
                   }
                 `}
@@ -130,10 +130,10 @@ export default function LeadCapture() {
             </div>
 
             {isAppointmentMode && (
-              <div className="space-y-6 animate-in fade-in slide-in-from-top-6 duration-700 p-6 bg-blue-50/30 rounded-[2rem] border border-blue-100/50">
+              <div className="space-y-4 animate-in fade-in slide-in-from-top-6 duration-700 bg-white ">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <select 
-                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.gender} onChange={(e) => setFormData({...formData, gender: e.target.value})}
                   >
                     <option value="">Sexe</option>
@@ -141,36 +141,36 @@ export default function LeadCapture() {
                     <option value="F">Féminin</option>
                   </select>
                   <input 
-                    type="text" placeholder="Naissance (JJ/MM/AA)"
-                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    type="text" placeholder="Date de naissance (JJ/MM/AA)"
+                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.birthdate} onChange={(e) => setFormData({...formData, birthdate: e.target.value})}
                   />
                   <input 
-                    type="text" placeholder="Votre Commune"
-                    className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200"
+                    type="text" placeholder="Commune"
+                    className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200"
                     value={formData.commune} onChange={(e) => setFormData({...formData, commune: e.target.value})}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Quartier" className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})} />
-                  <input type="text" placeholder="Adresse complète" className="p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})} />
+                  <input type="text" placeholder="Quartier" className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.quartier} onChange={(e) => setFormData({...formData, quartier: e.target.value})} />
+                  <input type="text" placeholder="Avenue et numero" className="p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.avenue} onChange={(e) => setFormData({...formData, avenue: e.target.value})} />
                 </div>
 
                 <div className="space-y-4">
-                  <select required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.service_id} onChange={(e) => setFormData({...formData, service_id: e.target.value})}>
-                    <option value="">Choisir un service expert</option>
+                  <select required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.service_id} onChange={(e) => setFormData({...formData, service_id: e.target.value})}>
+                    <option value="">Choisir un service</option>
                     <option value="cardiologie">Cardiologie Interventionnelle</option>
                     <option value="pediatrie">Néonatologie & Pédiatrie</option>
                     <option value="chirurgie">Chirurgie de Pointe</option>
                   </select>
-                  <textarea placeholder="Décrivez brièvement le motif..." className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
-                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-white outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
+                  <textarea placeholder="Décrivez brièvement le motif..." className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
+                  <input type="datetime-local" required={isAppointmentMode} className="w-full p-4 rounded-2xl border-white border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
                 </div>
               </div>
             )}
 
-            <button type="submit" className="w-full bg-blue-950 text-white font-black py-5 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
+            <button type="submit" className="w-full bg-green-900 text-white font-black py-4 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
               {isAppointmentMode ? 'Je prends rendez-vous' : 'Je m\'inscris'}
             </button>
 
