@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { databases, ID_UNIQUE, APPWRITE_CONFIG } from '@/lib/appwrite';
-import { ArrowRight, Sparkles } from 'lucide-react'; // Ajout d'icônes pro
+import { ArrowRight, Sparkles, Calendar } from 'lucide-react'; // Ajout d'icônes pro
 
 export default function LeadCapture() {
   const [isAppointmentMode, setIsAppointmentMode] = useState(false);
@@ -82,13 +82,7 @@ export default function LeadCapture() {
           <h2 className="text-2xl font-bold text-blue-900 mb-2">Inscrivez-vous à notre newsletter santé</h2>
 
           <p className="text-slate-500 text-xl">Prendre mon rendez-vous en ligne</p>
-
-            {/* <h2 className="text-4xl font-black text-blue-950 mb-3 tracking-tight uppercase">
-              {isAppointmentMode ? "Finalisez votre admission" : "Maîtrisez votre santé"}
-            </h2> */}
-            
           </div>
-
           <form onSubmit={handleSubmit} className="space-y-2 bg-white p-3 rounded-[3rem] shadow-2xl shadow-blue-900/5 border border-slate-50">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <input 
@@ -107,7 +101,6 @@ export default function LeadCapture() {
                 value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})}
               />
             </div>
-
             <div className="flex justify-center py-4">
               <button 
                 type="button" 
@@ -125,7 +118,6 @@ export default function LeadCapture() {
                 <span className="text-sm uppercase tracking-widest">
                   {isAppointmentMode ? "Fermer" : "Prendre un rendez-vous"}
                 </span>
-                {/* <ArrowRight size={18} className={`transition-transform ${isAppointmentMode ? 'rotate-90' : 'group-hover:translate-x-1'}`} /> */}
               </button>
             </div>
 
@@ -164,8 +156,25 @@ export default function LeadCapture() {
                     <option value="pediatrie">Néonatologie & Pédiatrie</option>
                     <option value="chirurgie">Chirurgie de Pointe</option>
                   </select>
-                  <div className='w-full'>
-                  <input type="datetime-local" required={isAppointmentMode} className="p-4 text-gray-900 text-xs font-black rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.appointment_date} onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} />
+      <div className='w-full relative group'>
+  {/* Icône du calendrier placée à droite */}
+  <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-blue-600">
+    <Calendar size={16} />
+  </div>
+
+  <input 
+    type="datetime-local" 
+    required={isAppointmentMode} 
+    className="w-full p-4 pr-12 text-gray-900 text-xs font-black rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200 appearance-none" 
+    value={formData.appointment_date} 
+    onChange={(e) => setFormData({...formData, appointment_date: e.target.value})} 
+  />
+
+  {!formData.appointment_date && (
+    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-[10px] uppercase tracking-widest font-bold">
+      Choisir Date & Heure
+    </span>
+  )}
 </div>
                   <textarea placeholder="Décrivez brièvement le motif..." className="w-full text-gray-900 text-xs font-black p-4 rounded-2xl border-blue-600/20 border bg-slate-50/50 outline-none focus:ring-2 focus:ring-blue-200" value={formData.reason} onChange={(e) => setFormData({...formData, reason: e.target.value})} rows={2} />
                 </div>
