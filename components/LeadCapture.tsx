@@ -123,7 +123,7 @@ export default function LeadCapture() {
               >
                 {!isAppointmentMode && <Sparkles size={18} className="animate-pulse" />}
                 <span className="text-sm uppercase tracking-widest">
-                  {isAppointmentMode ? "Fermer" : "Prendre mon rendez-vous maintenant"}
+                  {isAppointmentMode ? "Fermer" : "Prendre un rendez-vous"}
                 </span>
                 {/* <ArrowRight size={18} className={`transition-transform ${isAppointmentMode ? 'rotate-90' : 'group-hover:translate-x-1'}`} /> */}
               </button>
@@ -171,7 +171,7 @@ export default function LeadCapture() {
             )}
 
             <button type="submit" className="w-full bg-blue-950 text-white font-black py-5 rounded-2xl hover:bg-black transition-all shadow-xl uppercase tracking-widest text-sm">
-              {isAppointmentMode ? 'Je prends mon rendez-vous' : 'Je m\'inscris à la newsletter de la Clinique Astryd'}
+              {isAppointmentMode ? 'Je prends rendez-vous' : 'Je m\'inscris'}
             </button>
 
             {status && <p className="text-center p-4 bg-blue-50 rounded-2xl font-bold text-blue-900 animate-pulse">{status}</p>}
